@@ -9,7 +9,6 @@ namespace Friends.Models
         [Key]
         public int Id { get; set; }
         [Display(Name = "שם פרטי")]
-        [MaxLength(30)]
         public string FirstName { get; set; } = string.Empty;
         [Display(Name = "שם משפחה")] 
         public string LastName { get; set; } = string.Empty;
@@ -19,6 +18,7 @@ namespace Friends.Models
         public string Email { get; set; } = string.Empty;
         [Display(Name = "טלפון"), Phone(ErrorMessage = "מספר טלפון אינו תקין")]
         public string Phone { get; set; } = string.Empty;
+
         public List<Image> Images { get; set; }
         [Display(Name="הוספת תמונה"), NotMapped]public IFormFile setImage { get { return null; } 
             set { 

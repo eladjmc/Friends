@@ -16,9 +16,21 @@ namespace Friends.Controllers
 
         public IActionResult Index()
         {
-            
+
             return View(Data.Get.Friends.ToList());
 
+        }
+        public IActionResult Create()
+        {
+            return View(new Friend());
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult Create(Friend friend)
+        {
+            Data.Get.Friends.Add(friend);
+            Data.Get.SaveChanges();
+            return RedirectToAction("Index");
         }
 
 
