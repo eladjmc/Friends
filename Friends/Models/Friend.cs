@@ -9,6 +9,7 @@ namespace Friends.Models
         [Key]
         public int Id { get; set; }
         [Display(Name = "שם פרטי")]
+        [MaxLength(30)]
         public string FirstName { get; set; } = string.Empty;
         [Display(Name = "שם משפחה")] 
         public string LastName { get; set; } = string.Empty;
