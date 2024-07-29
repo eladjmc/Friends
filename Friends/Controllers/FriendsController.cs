@@ -19,7 +19,7 @@ namespace Friends.Controllers
         public IActionResult Index()
         {
 
-            return View(Data.Get.Friends.Include((f)=>f.Images).ToList());
+            return View(Data.Get.Friends.Include((f) => f.Images).ToList());
 
         }
         public IActionResult Create()
@@ -31,11 +31,31 @@ namespace Friends.Controllers
         public IActionResult Create(Friend friend)
         {
 
-                Data.Get.Friends.Add(friend);
-                Data.Get.SaveChanges();
-                return RedirectToAction("Index");
+            Data.Get.Friends.Add(friend);
+            Data.Get.SaveChanges();
+            return RedirectToAction("Index");
 
-         
+
+        }
+        public IActionResult Details(int? id)
+        {
+            if (id == null) return RedirectToAction("Index");
+            Friend? friend = Data.Get.Friends.Include(f=>f.Images).FirstOrDefault(f => f.Id == id);
+            if (friend == null) return RedirectToAction("Index");
+
+            return View(friend);
+        }
+        public IActionResult Delete(int? id)
+        {
+            if (id == null) return RedirectToAction("Index");
+            Friend? friendToDelete = Data.Get.Friends.Include((f) => f.Images).FirstOrDefault(f=>f.Id == id);
+            if (friendToDelete == null) return RedirectToAction("Index");
+
+            Data.Get.Remove(friendToDelete);
+            Data.Get.SaveChanges();
+
+            return RedirectToAction("Index");
+
         }
 
 
