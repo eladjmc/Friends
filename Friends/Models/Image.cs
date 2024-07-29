@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Friends.Models
 {
@@ -17,8 +16,7 @@ namespace Friends.Models
         }
         public Image()
         {
-            friend = null;
-            myImage = null;
+            
         }
     }
 }

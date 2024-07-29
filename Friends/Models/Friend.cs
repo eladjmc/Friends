@@ -19,12 +19,16 @@ namespace Friends.Models
         [Display(Name = "טלפון"), Phone(ErrorMessage = "מספר טלפון אינו תקין")]
         public string Phone { get; set; } = string.Empty;
 
+        [MinLength(1,ErrorMessage ="חייב להכניס תמונה")]
         public List<Image> Images { get; set; }
-        [Display(Name="הוספת תמונה"), NotMapped]public IFormFile setImage { get { return null; } 
+        [Display(Name="הוספת תמונה"), NotMapped]
+        public IFormFile setImage { 
+            get { return null; } 
             set { 
-                if (value == null) { return; } 
-                AddImage(value); }
-                }
+                if (value == null)  return; 
+                AddImage(value); 
+            }
+         }
         public Friend()
         {
             Images = new List<Image>();
