@@ -37,6 +37,24 @@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(Girafa => Girafa.Images)
         </dt>
+
+        <dd class="col-sm-10">
+            <p>הוספת תמונה</p>
+        </dd>
+        <dt class="col-sm-2 mb-3">
+            <button class="btn btn-primary" id="add-image-btn" onclick="addImage()">פתח</button>
+            <form asp-action="AddImage" id="add-image-form" style="display:none" enctype="multipart/form-data">
+                <input asp-for="Id" type="hidden" class="form-control" />
+                <div class="form-group">
+                    <label name="image" class="control-label"></label>
+                    <input name="image" id="image" type="file" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input onclick="addImage()" type="submit" value="הוסף תמונה" class="btn btn-dark mt-1" />
+                </div>
+            </form>
+        </dt>
+
         <dd class="col-sm-10">
             @if (!Model.Images.Any())
             {
